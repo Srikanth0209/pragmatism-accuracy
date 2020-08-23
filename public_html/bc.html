@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DW6 -->
+<head>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+<title>Bresenhams Circle</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="mm_entertainment.css" type="text/css" />
+<style type="text/css">
+<!--
+.style1 {font-size: 14px}
+-->
+</style>
+</head>
+<body bgcolor="#14285f">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr bgcolor="02021e">
+    <td width="400" colspan="2" rowspan="2" nowrap="nowrap"><img src="mm_entertainment_image.jpg" alt="Header image" width="400" height="140" border="0" /></td>
+    <td width="360" height="58" nowrap="nowrap" colspan="2" id="logo" valign="bottom">CGM LAB </td>
+    <td width="100%">&nbsp;</td>
+  </tr>
+  <tr bgcolor="02021E">
+    <td height="57" nowrap="nowrap" colspan="2" id="tagline" valign="top"><br />	  </td>
+	<td width="100%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="5" bgcolor="#cc3300"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0" /></td>
+  </tr>
+
+   <tr>
+    <td colspan="5"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0" /></td>
+  </tr>
+
+   <tr>
+    <td colspan="5" bgcolor="#cc3300"><img src="mm_spacer.gif" alt="" width="1" height="1" border="0" /></td>
+  </tr>
+
+  <tr>
+    <td colspan="5" id="dateformat">&nbsp;<br />
+	&nbsp; &nbsp; <table width="200" border="1">
+      <tr>
+        <th scope="col"><a href="index.html" title="HOME">HOME</a></th>
+      </tr>
+      <tr>
+        <th scope="row"><a href="ALGORITHMS.html">BACK</a></th>
+      </tr>
+    </table>	<a href="javascript:;"></a><br />	</td>
+  </tr>
+  <tr>
+    <td width="156" valign="top">&nbsp;</td>
+   <td colspan="2" valign="top"><br />
+	<table border="0" cellspacing="0" cellpadding="2" width="504">
+        <tr>
+          <td class="subHeader">Bresenhams Circle Algorithm </td>
+        </tr>
+        <tr>
+          <td class="bodyText"><p class="style1">Scan-Converting a circle using Bresenham's algorithm works as follows: Points are generated from 90&deg; to 45&deg;, moves will be made only in the +x &amp; -y directions as shown in fig:</p>
+            <span class="style1"><img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-bresenhams-circle-algorithm.png" alt="Bresenham's Circle Algorithm" />            </span>
+            <p class="style1">The best approximation of the true circle will be described by those pixels in the raster that falls the least distance from the true circle. We want to generate the points from</p>
+            <span class="style1"><img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-bresenhams-circle-algorithm2.png" alt="Bresenham's Circle Algorithm" />            </span>
+            <p class="style1">90&deg; to 45&deg;. Assume that the last scan-converted pixel is P1&nbsp;as shown in fig. Each new point closest to the true circle can be found by taking either of two actions.</p>
+            <ol class="style1">
+              <li>Move in the x-direction one unit or</li>
+              <li>Move in the x- direction one unit &amp; move in the negative y-direction one unit.</li>
+            </ol>
+            <p class="style1">Let D (Si) is the distance from the origin to the true circle squared minus the distance to point P3&nbsp;squared. D (Ti) is the distance from the origin to the true circle squared minus the distance to point P2&nbsp;squared. Therefore, the following expressions arise.</p>
+            <p class="style1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; D (Si)=(xi-1+1)2+ yi-12&nbsp;-r2<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; D (Ti)=(xi-1+1)2+(yi-1&nbsp;-1)2-r2</p>
+            <p class="style1">Since D (Si) will always be +ve &amp; D (Ti) will always be -ve, a decision variable d may be defined as follows:</p>
+            <span class="style1"><img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-bresenhams-circle-algorithm3.png" alt="Bresenham's Circle Algorithm" />            </span>
+            <p class="style1">di=D (Si&nbsp;)+ D (Ti)</p>
+            <p class="style1">Therefore,<br />
+              di=(xi-1+1)2+ yi-12&nbsp;-r2+(xi-1+1)2+(yi-1&nbsp;-1)2-r2</p>
+            <p class="style1">From this equation, we can drive initial values of di&nbsp;as</p>
+            <p class="style1">If it is assumed that the circle is centered at the origin, then at the first step x = 0 &amp; y = r.</p>
+            <p class="style1">Therefore,<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; di=(0+1)2+r2&nbsp;-r2+(0+1)2+(r-1)2-r2<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =1+1+r2-2r+1-r2<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 3 - 2r</p>
+            <p class="style1">Thereafter, if d_i&lt;0,then only x is incremented.</p>
+            <p class="style1">xi+1=xi+1&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; di+1=di+ 4xi+6</p>
+            <p class="style1">&amp; if di&ge;0,then x &amp; y are incremented<br />
+              xi+1=xi+1&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; yi+1&nbsp;=yi+ 1<br />
+              di+1=di+ 4 (xi-yi)+10</p>
+            <h2>Bresenham's Circle Algorithm:</h2>
+            <p><span class="style1"><strong>Step1:</strong>&nbsp;Start Algorithm</span></p>
+            <p class="style1"><strong>Step2:</strong>&nbsp;Declare p, q, x, y, r, d variables<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; p, q are coordinates of the center of the circle<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; r is the radius of the circle</p>
+            <p class="style1"><strong>Step3:</strong>&nbsp;Enter the value of r</p>
+            <p class="style1"><strong>Step4:</strong>&nbsp;Calculate d = 3 - 2r</p>
+            <p class="style1"><strong>Step5:</strong>&nbsp;Initialize &nbsp; &nbsp; &nbsp; x=0<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &amp;nbsy= r</p>
+            <p class="style1"><strong>Step6:</strong>&nbsp;Check if the whole circle is scan converted<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; If x &gt; = y<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Stop</p>
+            <p class="style1"><strong>Step7:</strong>&nbsp;Plot eight points by using concepts of eight-way symmetry. The center is at (p, q). Current active pixel is (x, y).<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; putpixel (x+p, y+q)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; putpixel (y+p, x+q)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; putpixel (-y+p, x+q)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; putpixel (-x+p, y+q)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; putpixel (-x+p, -y+q)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; putpixel (-y+p, -x+q)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; putpixel (y+p, -x+q)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; putpixel (x+p, -y-q)</p>
+            <p class="style1"><strong>Step8:</strong>&nbsp;Find location of next pixels to be scanned<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; If d &lt; 0<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; then d = d + 4x + 6<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; increment x = x + 1<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; If d &ge; 0<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; then d = d + 4 (x - y) + 10<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; increment x = x + 1<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; decrement y = y - 1</p>
+            <p class="style1"><strong>Step9:</strong>&nbsp;Go to step 6</p>
+            <p class="style1"><strong>Step10:</strong>&nbsp;Stop Algorithm</p>
+            <p class="style1"><strong>Example:</strong>&nbsp;Plot 6 points of circle using Bresenham Algorithm. When radius of circle is 10 units. The circle has centre (50, 50).</p>
+            <p class="style1"><strong>Solution:</strong>&nbsp;Let r = 10 (Given)</p>
+            <p class="style1"><strong>Step1:</strong>&nbsp;Take initial point (0, 10)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d = 3 - 2r<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d = 3 - 2 * 10 = -17<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d &lt; 0 &there4; d = d + 4x + 6<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = -17 + 4 (0) + 6<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = -11</p>
+            <p class="style1"><strong>Step2:</strong>&nbsp;Plot (1, 10)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d = d + 4x + 6 (&#8757; d &lt; 0)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = -11 + 4 (1) + 6<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = -1</p>
+            <p class="style1"><strong>Step3:</strong>&nbsp;Plot (2, 10)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;d = d + 4x + 6 (&#8757; d &lt; 0)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = -1 + 4 x 2 + 6<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 13</p>
+            <p class="style1"><strong>Step4:</strong>&nbsp;Plot (3, 9) d is &gt; 0 so x = x + 1, y = y - 1<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d = d + 4 (x-y) + 10 (&#8757; d &gt; 0)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 13 + 4 (3-9) + 10<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 13 + 4 (-6) + 10<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 23-24=-1</p>
+            <p class="style1"><strong>Step5:</strong>&nbsp;Plot (4, 9)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d = -1 + 4x + 6<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = -1 + 4 (4) + 6<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 21</p>
+            <p class="style1"><strong>Step6:</strong>&nbsp;Plot (5, 8)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d = d + 4 (x-y) + 10 (&#8757; d &gt; 0)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 21 + 4 (5-8) + 10<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 21-12 + 10 = 19</p>
+            <p class="style1">So P1&nbsp;(0,0)&#10233;(50,50)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; P2&nbsp;(1,10)&#10233;(51,60)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; P3&nbsp;(2,10)&#10233;(52,60)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; P4&nbsp;(3,9)&#10233;(53,59)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; P5&nbsp;(4,9)&#10233;(54,59)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; P6&nbsp;(5,8)&#10233;(55,58)</p>
+            <h3>Program to draw a circle using Bresenham's circle drawing algorithm:</h3>
+            <div>
+              <div>
+                <div>
+                  <div></div>
+                </div>
+                <ol start="1" class="style1">
+                  <li>#include&nbsp;&lt;graphics.h&gt;&nbsp;&nbsp;</li>
+                  <li>#include&nbsp;&lt;stdlib.h&gt;&nbsp;&nbsp;</li>
+                  <li>#include&nbsp;&lt;stdio.h&gt;&nbsp;&nbsp;</li>
+                  <li>#include&nbsp;&lt;conio.h&gt;&nbsp;&nbsp;</li>
+                  <li>#include&nbsp;&lt;math.h&gt;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;&nbsp;&nbsp;&nbsp;EightWaySymmetricPlot(int&nbsp;xc,int&nbsp;yc,int&nbsp;x,int&nbsp;y)&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;putpixel(x+xc,y+yc,RED);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;putpixel(x+xc,-y+yc,YELLOW);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;putpixel(-x+xc,-y+yc,GREEN);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;putpixel(-x+xc,y+yc,YELLOW);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;putpixel(y+xc,x+yc,12);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;putpixel(y+xc,-x+yc,14);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;putpixel(-y+xc,-x+yc,15);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;putpixel(-y+xc,x+yc,6);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;BresenhamCircle(int&nbsp;xc,int&nbsp;yc,int&nbsp;r)&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;x=0,y=r,d=3-(2*r);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;EightWaySymmetricPlot(xc,yc,x,y);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;while(x&lt;=y)&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(d&lt;=0)&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d=d+(4*x)+6;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d=d+(4*x)-(4*y)+10;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y=y-1;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x=x+1;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EightWaySymmetricPlot(xc,yc,x,y);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;main(void)&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;request&nbsp;auto&nbsp;detection&nbsp;*/&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;xc,yc,r,gdriver&nbsp;=&nbsp;DETECT,&nbsp;gmode,&nbsp;errorcode;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;initialize&nbsp;graphics&nbsp;and&nbsp;local&nbsp;variables&nbsp;*/&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initgraph(&amp;gdriver,&nbsp;&amp;gmode,&nbsp;&quot;C:\\TURBOC3\\BGI&quot;);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;read&nbsp;result&nbsp;of&nbsp;initialization&nbsp;*/&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorcode&nbsp;=&nbsp;graphresult();&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(errorcode&nbsp;!=&nbsp;grOk)&nbsp;&nbsp;/*&nbsp;an&nbsp;error&nbsp;occurred&nbsp;*/&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Graphics&nbsp;error:&nbsp;%s\n&quot;,&nbsp;grapherrormsg(errorcode));&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Press&nbsp;any&nbsp;key&nbsp;to&nbsp;halt:&quot;);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getch();&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;exit(1);&nbsp;/*&nbsp;terminate&nbsp;with&nbsp;an&nbsp;error&nbsp;code&nbsp;*/&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Enter&nbsp;the&nbsp;values&nbsp;of&nbsp;xc&nbsp;and&nbsp;yc&nbsp;:&quot;);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(&quot;%d%d&quot;,&amp;xc,&amp;yc);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Enter&nbsp;the&nbsp;value&nbsp;of&nbsp;radius&nbsp;&nbsp;:&quot;);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanf(&quot;%d&quot;,&amp;r);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BresenhamCircle(xc,yc,r);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getch();&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closegraph();&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;0;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</li>
+                </ol>
+              </div>
+            </div>
+            <p><strong>Output:</strong></p>
+            <img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-bresenhams-circle-algorithm4.png" alt="Bresenham's Circle Algorithm" />            <p class="style1">&nbsp;</p>			</td>
+		</tr>
+      </table></td>
+    <td width="100">&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="156">&nbsp;</td>
+    <td width="244">&nbsp;</td>
+    <td width="260">&nbsp;</td>
+    <td width="100">&nbsp;</td>
+	<td width="100%">&nbsp;</td>
+  </tr>
+</table>
+<br />
+</body>
+</html>

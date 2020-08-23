@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DW6 -->
+<head>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+<title>DDA</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="mm_entertainment.css" type="text/css" />
+<style type="text/css">
+<!--
+.style1 {font-size: 14px}
+.style2 {font-size: 16px}
+-->
+</style>
+</head>
+<body bgcolor="#14285f">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr bgcolor="02021e">
+    <td colspan="2" rowspan="2" nowrap="nowrap"><img src="mm_entertainment_image.jpg" alt="Header image" width="400" height="140" border="0" /></td>
+    <td height="58" nowrap="nowrap" colspan="2" id="logo" valign="bottom">CGM LAB </td>
+    <td width="4">&nbsp;</td>
+  </tr>
+  <tr bgcolor="02021E">
+    <td height="57" nowrap="nowrap" colspan="2" id="tagline" valign="top"><br />	  </td>
+	<td width="4">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="5" bgcolor="#cc3300"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0" /></td>
+  </tr>
+
+   <tr>
+    <td colspan="5"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0" /></td>
+  </tr>
+
+   <tr>
+    <td colspan="5" bgcolor="#cc3300"><img src="mm_spacer.gif" alt="" width="1" height="1" border="0" /></td>
+  </tr>
+
+  <tr>
+    <td colspan="5" id="dateformat">&nbsp;<br />
+      <table width="200" border="1">
+        <tr>
+          <th scope="col"><a href="index.html">HOME</a></th>
+        </tr>
+        <tr>
+          <th scope="row"><a href="ALGORITHMS.html">BACK</a></th>
+        </tr>
+      </table>      <br />	</td>
+  </tr>
+  <tr>
+    <td width="156" valign="top">&nbsp;</td>
+   <td colspan="2" valign="top"><span class="style1"><br />
+	</span>
+     <table border="0" cellspacing="0" cellpadding="2" width="1026">
+        <tr>
+          <td width="1042" class="subHeader style2">DDA Algorithm: </td>
+        </tr>
+        <tr>
+          <td class="bodyText style1"><p>DDA stands for Digital Differential Analyzer. It is an incremental method of scan conversion of line. In this method calculation is performed at each step but by using results of previous steps.</p>
+
+			<p>Suppose at step i, the pixels is (xi,yi)</p>
+			<p>The line of equation for step i<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; yi=mxi+b......................equation 1</p>
+			<p>Next value will be<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; yi+1=mxi+1+b.................equation 2<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; m =<img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-dda-algorithm.png" alt="DDA Algorithm" /><br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; yi+1-yi=&#8710;y.......................equation 3<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; yi+1-xi=&#8710;x......................equation 4<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; yi+1=yi+&#8710;y<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#8710;y=m&#8710;x<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; yi+1=yi+m&#8710;x<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#8710;x=&#8710;y/m<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; xi+1=xi+&#8710;x<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; xi+1=xi+&#8710;y/m</p>
+			<p><strong>Case1:</strong>&nbsp;When |M|&lt;1 then (assume that x12)<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; x= x1,y=y1&nbsp;set &#8710;x=1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; yi+1=y1+m, &nbsp; &nbsp; x=x+1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Until x = x2</p>
+			<p><strong>Case2:</strong>&nbsp;When |M|&lt;1 then (assume that y12)<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; x= x1,y=y1&nbsp;set &#8710;y=1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; xi+1=<img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-dda-algorithm2.png" alt="DDA Algorithm" />, &nbsp; &nbsp; y=y+1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Until y &rarr; y2</p>
+			<h3>Advantage:</h3>
+			<ol>
+			  <li>It is a faster method than method of using direct use of line equation.</li>
+			  <li>This method does not use multiplication theorem.</li>
+			  <li>It allows us to detect the change in the value of x and y ,so plotting of same point twice is not possible.</li>
+			  <li>This method gives overflow indication when a point is repositioned.</li>
+			  <li>It is an easy method because each step involves just two additions.</li>
+		    </ol>
+			<h3>Disadvantage:</h3>
+			<ol>
+			  <li>It involves floating point additions rounding off is done. Accumulations of round off error cause accumulation of error.</li>
+			  <li>Rounding off operations and floating point operations consumes a lot of time.</li>
+			  <li>It is more suitable for generating line using the software. But it is less suited for hardware implementation.</li>
+		    </ol>
+			<h2>DDA Algorithm:</h2>
+			<p><strong>Step1:</strong>&nbsp;Start Algorithm</p>
+			<p><strong>Step2:</strong>&nbsp;Declare x1,y1,x2,y2,dx,dy,x,y as integer variables.</p>
+			<p><strong>Step3:</strong>&nbsp;Enter value of x1,y1,x2,y2.</p>
+			<p><strong>Step4:</strong>&nbsp;Calculate dx = x2-x1</p>
+			<p><strong>Step5:</strong>&nbsp;Calculate dy = y2-y1</p>
+			<p><strong>Step6:</strong>&nbsp;If ABS (dx) &gt; ABS (dy)<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Then step = abs (dx)<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Else</p>
+			<p><strong>Step7:</strong>&nbsp;xinc=dx/step<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; yinc=dy/step<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; assign x = x1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; assign y = y1</p>
+			<p><strong>Step8:</strong>&nbsp;Set pixel (x, y)</p>
+			<p><strong>Step9:</strong>&nbsp;x = x + xinc<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y = y + yinc<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Set pixels (Round (x), Round (y))</p>
+			<p><strong>Step10:</strong>&nbsp;Repeat step 9 until x = x2</p>
+			<p><strong>Step11:</strong>&nbsp;End Algorithm</p>
+			<p><strong>Example:</strong>&nbsp;If a line is drawn from (2, 3) to (6, 15) with use of DDA. How many points will needed to generate such line?</p>
+			<p><strong>Solution:</strong>&nbsp;P1&nbsp;(2,3) &nbsp; &nbsp; &nbsp; P11&nbsp;(6,15)</p>
+			<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; x1=2<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y1=3<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; x2= 6<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y2=15<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dx = 6 - 2 = 4<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dy = 15 - 3 = 12<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; m =&nbsp;<img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-dda-algorithm3.png" alt="DDA Algorithm" /></p>
+			<p>For calculating next value of x takes x = x +&nbsp;<img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-dda-algorithm4.png" alt="DDA Algorithm" /></p>
+			<p><img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-dda-algorithm5.png" alt="DDA Algorithm" /></p>
+			<img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-dda-algorithm6.jpg" alt="DDA Algorithm" />
+            <h3>Program to implement DDA Line Drawing Algorithm:</h3>
+            <div>
+              <div>
+                <div>
+                  <div></div>
+                </div>
+                <ol start="1">
+                  <li>#include&lt;graphics.h&gt;&nbsp;&nbsp;</li>
+                  <li>#include&lt;conio.h&gt;&nbsp;&nbsp;</li>
+                  <li>#include&lt;stdio.h&gt;&nbsp;&nbsp;</li>
+                  <li>void&nbsp;main()&nbsp;&nbsp;</li>
+                  <li>{&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;intgd&nbsp;=&nbsp;DETECT&nbsp;,gm,&nbsp;i;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;x,&nbsp;y,dx,dy,steps;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;x0,&nbsp;x1,&nbsp;y0,&nbsp;y1;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;initgraph(&amp;gd,&nbsp;&amp;gm,&nbsp;&quot;C:\\TC\\BGI&quot;);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;setbkcolor(WHITE);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;x0&nbsp;=&nbsp;100&nbsp;,&nbsp;y0&nbsp;=&nbsp;200,&nbsp;x1&nbsp;=&nbsp;500,&nbsp;y1&nbsp;=&nbsp;300;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;dx&nbsp;=&nbsp;(float)(x1&nbsp;-&nbsp;x0);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;dy&nbsp;=&nbsp;(float)(y1&nbsp;-&nbsp;y0);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;if(dx&gt;=dy)&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;steps&nbsp;=&nbsp;dx;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;steps&nbsp;=&nbsp;dy;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;dx&nbsp;=&nbsp;dx/steps;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;dy&nbsp;=&nbsp;dy/steps;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;=&nbsp;x0;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;=&nbsp;y0;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;=&nbsp;1;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;while(i&lt;=&nbsp;steps)&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;putpixel(x,&nbsp;y,&nbsp;RED);&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;+=&nbsp;dx;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;+=&nbsp;dy;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i=i+1;&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;getch();&nbsp;&nbsp;</li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;closegraph();&nbsp;&nbsp;</li>
+                  <li>}&nbsp;&nbsp;</li>
+                </ol>
+              </div>
+            </div>
+            <p><strong>Output:</strong></p>
+            <img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-dda-algorithm7.png" alt="DDA Algorithm" />
+            <h2>Symmetrical DDA:</h2>
+            <p>The Digital Differential Analyzer (DDA) generates lines from their differential equations. The equation of a straight line is</p>
+            <img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-dda-algorithm8.png" alt="DDA Algorithm" />
+            <p>The DDA works on the principle that we simultaneously increment x and y by small steps proportional to the first derivatives of x and y. In this case of a straight line, the first derivatives are constant and are proportional to &#8710;x and &#8710;y . Therefore, we could generate a line by incrementing x and y by &#1013; &#8710;x and &#1013; &#8710;y, where &#1013; is some small quantity. There are two ways to generate points</p>
+            <p>1. By rounding to the nearest integer after each incremental step, after rounding we display dots at the resultant x and y.</p>
+            <p>2. An alternative to rounding the use of arithmetic overflow: x and y are kept in registers that have two parts, integer and fractional. The incrementing values, which are both less than unity, are repeatedly added to the fractional parts and whenever the results overflows, the corresponding integer part is incremented. The integer parts of the x and y registers are used in plotting the line. In the case of the symmetrical DDA, we choose &epsilon;=2-n,where 2n-1&le;max (|&#8710;x|,|&#8710;y|)&lt;2&pi;</p>
+            <p>A line drawn with the symmetrical DDA is shown in fig:</p>
+            <img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-dda-algorithm9.jpg" alt="DDA Algorithm" /><br />
+            <p><strong>Example:</strong>&nbsp;If a line is drawn from (0, 0) to (10, 5) with a symmetrical DDA</p>
+            <p>1. How many iterations are performed?</p>
+            <p>2. How many different points will be generated?</p>
+            <p><strong>Solutions:</strong>&nbsp;Given: P1&nbsp;(0,0) P2&nbsp;(10,5)<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; x1=0<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y1=0<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; x2=10<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y2=5<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dx = 10 - 0 = 10<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; dy = 5 - 0 = 0<br />
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-dda-algorithm10.png" alt="DDA Algorithm" /></p>
+            <p>P1&nbsp;(0,0) will be considered starting points<br />
+              P3&nbsp;(1,0.5) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; point not plotted<br />
+              P4&nbsp;(2, 1) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; point plotted<br />
+              P5&nbsp;(3, 1.5) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; point not plotted<br />
+              P6&nbsp;(4,2) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; point plotted<br />
+              P7&nbsp;(5,2.5) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; point not plotted<br />
+              P8&nbsp;(6,3) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; point plotted<br />
+              P9&nbsp;(7,3.5) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; point not plotted<br />
+              P10&nbsp;(8, 4) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; point plotted<br />
+              P11&nbsp;(9,4.5) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; point not plotted<br />
+              P12&nbsp;(10,5) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; point plotted</p>
+            <p>Following Figure show line plotted using these points.</p>
+            <p>!</p></td>
+		</tr>
+      </table></td>
+    <td width="131">&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="156">&nbsp;</td>
+    <td width="244">&nbsp;</td>
+    <td width="747">&nbsp;</td>
+    <td width="131">&nbsp;</td>
+	<td width="4">&nbsp;</td>
+  </tr>
+</table>
+<br />
+</body>
+</html>

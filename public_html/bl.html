@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DW6 -->
+<head>
+<!-- Copyright 2005 Macromedia, Inc. All rights reserved. -->
+<title>Bresenhams Line</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="mm_entertainment.css" type="text/css" />
+<style type="text/css">
+<!--
+.style1 {font-size: 14px}
+-->
+</style>
+</head>
+<body bgcolor="#14285f">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr bgcolor="02021e">
+    <td colspan="2" rowspan="2" nowrap="nowrap"><img src="mm_entertainment_image.jpg" alt="Header image" width="303" height="140" border="0" /></td>
+    <td height="58" nowrap="nowrap" colspan="2" id="logo" valign="bottom">COMPUTER GRAPHICS AND MULTIMEDIA LAB </td>
+    <td width="266">&nbsp;</td>
+  </tr>
+  <tr bgcolor="02021E">
+    <td height="57" nowrap="nowrap" colspan="2" id="tagline" valign="top"><br />	  </td>
+	<td width="266">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="5" bgcolor="#cc3300"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0" /></td>
+  </tr>
+
+   <tr>
+    <td colspan="5"><img src="mm_spacer.gif" alt="" width="1" height="2" border="0" /></td>
+  </tr>
+
+   <tr>
+    <td colspan="5" bgcolor="#cc3300"><img src="mm_spacer.gif" alt="" width="1" height="1" border="0" /></td>
+  </tr>
+
+  <tr>
+    <td colspan="5" id="dateformat">&nbsp;
+      <table width="200" border="1">
+        <tr>
+          <th scope="col"><a href="index.html" title="HOME" target="_top">HOME</a></th>
+        </tr>
+        <tr>
+          <th scope="row"><a href="ALGORITHMS.html" title="BACK" target="_top">BACK</a></th>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td width="156" valign="top">&nbsp;</td>
+   <td colspan="2" valign="top"><br />
+	<table border="0" cellspacing="0" cellpadding="2" width="504">
+        <tr>
+          <td class="subHeader">Bresenhams Line Algorithm: </td>
+        </tr>
+        <tr>
+          <td class="bodyText"><p align="left" class="style1">This algorithm is used for scan converting a line. It was developed by Bresenham. It is an efficient method because it involves only integer addition, subtractions, and multiplication operations. These operations can be performed very rapidly so lines can be generated quickly.</p>
+
+			<p align="left" class="style1">In this method, next pixel selected is that one who has the least distance from true line.</p>
+			<p align="left" class="style1">The method works as follows:</p>
+			<p align="left" class="style1">Assume a pixel P1'(x1',y1'),then select subsequent pixels as we work our may to the night, one pixel position at a time in the horizontal direction toward P2'(x2',y2').</p>
+			<p align="left" class="style1">Once a pixel in choose at any step</p>
+			<p align="left" class="style1">The next pixel is</p>
+			
+		    
+		      <div align="left" class="style1">
+			      <ol>
+			        <li>Either the one to its right (lower-bound for the line)</li>
+			        <li>One top its right and up (upper-bound for the line)</li>
+		        </ol>
+	        </div>
+		    <p align="left" class="style1">The line is best approximated by those pixels that fall the least distance from the path between P1',P2'.</p>
+			    <div align="left" class="style1"><img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-bresenhams-line-algorithm.jpg" alt="Bresenham's Line Algorithm" /><br />
+	          </div>
+		    <p align="left" class="style1">To chooses the next one between the bottom pixel S and top pixel T.<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; If S is chosen<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; We have xi+1=xi+1 &nbsp; &nbsp; &nbsp; and &nbsp; &nbsp; &nbsp; yi+1=yi<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; If T is chosen<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; We have xi+1=xi+1 &nbsp; &nbsp; &nbsp; and &nbsp; &nbsp; &nbsp; yi+1=yi+1</p>
+			<p align="left" class="style1">The actual y coordinates of the line at x = xi+1is<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y=mxi+1+b</p>
+			<div align="left" class="style1"><img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-bresenhams-line-algorithm2.png" alt="Bresenham's Line Algorithm" /><br />
+		    </div>
+			<p align="left" class="style1">The distance from S to the actual line in y direction<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; s = y-yi</p>
+			<p align="left" class="style1">The distance from T to the actual line in y direction<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; t = (yi+1)-y</p>
+			<p align="left" class="style1">Now consider the difference between these 2 distance values<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; s - t</p>
+			<p align="left" class="style1">When (s-t) &lt;0 &#10233; s &lt; t</p>
+			<p align="left" class="style1">The closest pixel is S</p>
+			<p align="left" class="style1">When (s-t) &ge;0 &#10233; s &lt; t</p>
+			<p align="left" class="style1">The closest pixel is T</p>
+			<p align="left" class="style1">This difference is<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; s-t = (y-yi)-[(yi+1)-y]<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 2y - 2yi -1</p>
+			            <div align="left" class="style1"><img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-bresenhams-line-algorithm3.png" alt="Bresenham's Line Algorithm" /><br />
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  </div>
+			            <p align="left" class="style1">Substituting m by&nbsp;<img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-bresenhams-line-algorithm4.png" alt="Bresenham's Line Algorithm" />&nbsp;and introducing decision variable<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; di=&#9651;x (s-t)<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; di=&#9651;x (2&nbsp;<img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-bresenhams-line-algorithm4.png" alt="Bresenham's Line Algorithm" />&nbsp;(xi+1)+2b-2yi-1)<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =2&#9651;xyi-2&#9651;y-1&#9651;x.2b-2yi&#9651;x-&#9651;x<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; di=2&#9651;y.xi-2&#9651;x.yi+c</p>
+			<p align="left" class="style1">Where c= 2&#9651;y+&#9651;x (2b-1)</p>
+			<p align="left" class="style1">We can write the decision variable di+1&nbsp;for the next slip on<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; di+1=2&#9651;y.xi+1-2&#9651;x.yi+1+c<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; di+1-di=2&#9651;y.(xi+1-xi)- 2&#9651;x(yi+1-yi)</p>
+			<p align="left" class="style1">Since x_(i+1)=xi+1,we have<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; di+1+di=2&#9651;y.(xi+1-xi)- 2&#9651;x(yi+1-yi)<br />
+		    </p>
+			<p align="left" class="style1">Special Cases</p>
+			<p align="left" class="style1">If chosen pixel is at the top pixel T (i.e., di&ge;0)&#10233; yi+1=yi+1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; di+1=di+2&#9651;y-2&#9651;x</p>
+			<p align="left" class="style1">If chosen pixel is at the bottom pixel T (i.e., di&lt;0)&#10233; yi+1=yi<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; di+1=di+2&#9651;y</p>
+			<p align="left" class="style1">Finally, we calculate d1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d1=&#9651;x[2m(x1+1)+2b-2y1-1]<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d1=&#9651;x[2(mx1+b-y1)+2m-1]</p>
+			<p align="left" class="style1">Since mx1+b-yi=0 and m =&nbsp;<img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-bresenhams-line-algorithm4.png" alt="Bresenham's Line Algorithm" />, we have<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d1=2&#9651;y-&#9651;x</p>
+			<h3 align="left" class="style1">Advantage:</h3>
+			<p align="left" class="style1">1. It involves only integer arithmetic, so it is simple.</p>
+			<p align="left" class="style1">2. It avoids the generation of duplicate points.</p>
+			<p align="left" class="style1">3. It can be implemented using hardware because it does not use multiplication and division.</p>
+			<p align="left" class="style1">4. It is faster as compared to DDA (Digital Differential Analyzer) because it does not involve floating point calculations like DDA Algorithm.</p>
+			<h3 align="left" class="style1">Disadvantage:</h3>
+			<p align="left" class="style1">1. This algorithm is meant for basic line drawing only Initializing is not a part of Bresenham's line algorithm. So to draw smooth lines, you should want to look into a different algorithm.</p>
+			<h2 align="left" class="style1">Bresenham's Line Algorithm:</h2>
+			<p align="left" class="style1"><strong>Step1:</strong>&nbsp;Start Algorithm</p>
+			<p align="left" class="style1"><strong>Step2:</strong>&nbsp;Declare variable x1,x2,y1,y2,d,i1,i2,dx,dy</p>
+			<p align="left" class="style1"><strong>Step3:</strong>&nbsp;Enter value of x1,y1,x2,y2<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Where x1,y1are coordinates of starting point<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; And x2,y2&nbsp;are coordinates of Ending point</p>
+			<p align="left" class="style1"><strong>Step4:</strong>&nbsp;Calculate dx = x2-x1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Calculate dy = y2-y1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Calculate i1=2*dy<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Calculate i2=2*(dy-dx)<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Calculate d=i1-dx</p>
+			<p align="left" class="style1"><strong>Step5:</strong>&nbsp;Consider (x, y) as starting point and xendas maximum possible value of x.<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; If dx &lt; 0<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Then x = x2<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y = y2<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; xend=x1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; If dx &gt; 0<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Then x = x1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y = y1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; xend=x2</p>
+			<p align="left" class="style1"><strong>Step6:</strong>&nbsp;Generate point at (x,y)coordinates.</p>
+			<p align="left" class="style1"><strong>Step7:</strong>&nbsp;Check if whole line is generated.<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; If x &gt; = xend<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Stop.</p>
+			<p align="left" class="style1"><strong>Step8:</strong>&nbsp;Calculate co-ordinates of the next pixel<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; If d &lt; 0<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Then d = d + i1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; If d &ge; 0<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Then d = d + i2<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Increment y = y + 1</p>
+			<p align="left" class="style1"><strong>Step9:</strong>&nbsp;Increment x = x + 1</p>
+			<p align="left" class="style1"><strong>Step10:</strong>&nbsp;Draw a point of latest (x, y) coordinates</p>
+			<p align="left" class="style1"><strong>Step11:</strong>&nbsp;Go to step 7</p>
+			<p align="left" class="style1"><strong>Step12:</strong>&nbsp;End of Algorithm</p>
+			<p align="left" class="style1"><strong>Example:</strong>&nbsp;Starting and Ending position of the line are (1, 1) and (8, 5). Find intermediate points.</p>
+			<p align="left" class="style1"><strong>Solution:</strong>&nbsp;x1=1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y1=1<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; x2=8<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; y2=5<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dx= x2-x1=8-1=7<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; dy=y2-y1=5-1=4<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I1=2* &#8710;y=2*4=8<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I2=2*(&#8710;y-&#8710;x)=2*(4-7)=-6<br />
+			  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d = I1-&#8710;x=8-7=1</p>
+			
+		    
+	        <div align="left" class="style1">
+	          <table>
+	            <tbody>
+	              <tr>
+	                <th>x</th>
+	                <th>y</th>
+	                <th>d=d+I1&nbsp;or I2</th>
+                  </tr>
+	              <tr>
+	                <td>1</td>
+	                <td>1</td>
+	                <td>d+I2=1+(-6)=-5</td>
+                  </tr>
+	              <tr>
+	                <td>2</td>
+	                <td>2</td>
+	                <td>d+I1=-5+8=3</td>
+                  </tr>
+	              <tr>
+	                <td>3</td>
+	                <td>2</td>
+	                <td>d+I2=3+(-6)=-3</td>
+                  </tr>
+	              <tr>
+	                <td>4</td>
+	                <td>3</td>
+	                <td>d+I1=-3+8=5</td>
+                  </tr>
+	              <tr>
+	                <td>5</td>
+	                <td>3</td>
+	                <td>d+I2=5+(-6)=-1</td>
+                  </tr>
+	              <tr>
+	                <td>6</td>
+	                <td>4</td>
+	                <td>d+I1=-1+8=7</td>
+                  </tr>
+	              <tr>
+	                <td>7</td>
+	                <td>4</td>
+	                <td>d+I2=7+(-6)=1</td>
+                  </tr>
+	              <tr>
+	                <td>8</td>
+	                <td>5</td>
+	                <td></td>
+                  </tr>
+                </tbody>
+              </table>
+	          <img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-bresenhams-line-algorithm5.jpg" alt="Bresenham's Line Algorithm" />            </div>
+	        <h3 align="left" class="style1">Program to implement Bresenham's Line Drawing Algorithm:</h3>
+            <div class="style1">
+              <div>
+                <div>
+                  <div></div>
+                </div>
+                
+                
+                  <div align="left">
+                      <ol start="1">
+                        <li>#include&lt;stdio.h&gt;&nbsp;&nbsp;</li>
+                        <li>#include&lt;graphics.h&gt;&nbsp;&nbsp;</li>
+                        <li>void&nbsp;drawline(int&nbsp;x0,&nbsp;int&nbsp;y0,&nbsp;int&nbsp;x1,&nbsp;int&nbsp;y1)&nbsp;&nbsp;</li>
+                        <li>{&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;dx,&nbsp;dy,&nbsp;p,&nbsp;x,&nbsp;y;&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;dx=x1-x0;&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;dy=y1-y0;&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;x=x0;&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;y=y0;&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;p=2*dy-dx;&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;while(x&lt;x1)&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(p&gt;=0)&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;putpixel(x,y,7);&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y=y+1;&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p=p+2*dy-2*dx;&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;putpixel(x,y,7);&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p=p+2*dy;}&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x=x+1;&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</li>
+                        <li>}&nbsp;&nbsp;</li>
+                        <li>int&nbsp;main()&nbsp;&nbsp;</li>
+                        <li>{&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;gdriver=DETECT,&nbsp;gmode,&nbsp;error,&nbsp;x0,&nbsp;y0,&nbsp;x1,&nbsp;y1;&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;initgraph(&amp;gdriver,&nbsp;&amp;gmode,&nbsp;&quot;c:\\turboc3\\bgi&quot;);&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Enter&nbsp;co-ordinates&nbsp;of&nbsp;first&nbsp;point:&nbsp;&quot;);&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;scanf(&quot;%d%d&quot;,&nbsp;&amp;x0,&nbsp;&amp;y0);&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;printf(&quot;Enter&nbsp;co-ordinates&nbsp;of&nbsp;second&nbsp;point:&nbsp;&quot;);&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;scanf(&quot;%d%d&quot;,&nbsp;&amp;x1,&nbsp;&amp;y1);&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;drawline(x0,&nbsp;y0,&nbsp;x1,&nbsp;y1);&nbsp;&nbsp;</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;0;&nbsp;&nbsp;</li>
+                        <li>}&nbsp;&nbsp;</li>
+                      </ol>
+                </div>
+              </div>
+            </div>
+            <p align="left" class="style1"><strong>Output:</strong></p>
+            <div align="left"><span class="style1"><img src="https://static.javatpoint.com/tutorial/computer-graphics/images/computer-graphics-bresenhams-line-algorithm6.png" alt="Bresenham's Line Algorithm" /></span></div></td>
+        </tr>
+      </table></td>
+    <td width="176">&nbsp;</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="156">&nbsp;</td>
+    <td width="141">&nbsp;</td>
+    <td width="560">&nbsp;</td>
+    <td width="176">&nbsp;</td>
+	<td width="266">&nbsp;</td>
+  </tr>
+</table>
+<br />
+</body>
+</html>
